@@ -1,0 +1,23 @@
+{% extends 'videoapp/base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="card mt-3 mx-auto col-md-6">
+		<h2 class="bg-secondary text-center text-white mt-2">
+			Login
+		</h2>
+		<form method='POST'>
+			{% csrf_token %}
+			<input type="text" name="username" class="form-control"
+			placeholder="Enter username">
+			<input type="password" name="password" class="form-control"
+			placeholder="Enter password">
+			<input type="submit" name="submit" value="Login"
+			class="form-control btn btn-outline-success">  <!--
+			<a href='{% url "register" %}' class="form-control btn btn-outline-info">
+				Create Account/New User
+			</a> -->
+		</form>
+	</div>
+</div>
+{% endblock %}

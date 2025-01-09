@@ -1,0 +1,28 @@
+{% extends 'videoapp/base.html' %}
+{% block title %}Display Files{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="card mt-5 mx-auto col-md-10">
+        <h2 class="bg-secondary text-center text-white mt-2">
+            FILES UPLOADED BY THE INSTRUCTOR:
+        </h2>
+
+ 
+    <table class="table table-bordered mx-1 my-3" style="width:100%">
+  <tr>
+    <th>Filename</th>
+    <th>View</th> 
+  </tr>
+  {% for file,url in files_dict.items %}
+  <tr>
+    <td>{{file}}</td>
+    <td><p><a href="{{ url }}">{{ file }}</a></p></td>
+
+  </tr> 
+
+  {% endfor %}
+  </table>
+  </div>
+</div>
+  
+{% endblock %}

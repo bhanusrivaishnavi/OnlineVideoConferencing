@@ -1,0 +1,46 @@
+{% extends 'videoapp/base.html' %}
+{% block title %}Profile {{user.username}}{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row mt-3 ">
+		<div class="card col-md-4 mx-2">
+			<h2 class="bg-primary text-center text-white mt-2">Profile</h2>
+			<div class="card-body">
+				<img src="{{request.user.update.image.url}}" height="230px" width="100%">
+			</div>
+			
+		</div>
+		<div class="card col-md mx-2">
+			<h2 class="bg-primary text-center text-white mt-2">Details</h2>
+			<table class="table table-bordered mx-3 my-2">
+				<tr>
+					<th>First Name</th>
+					<td>{{user.first_name}}</td>
+				</tr>
+				<tr>
+					<th>Last Name</th>
+					<td>{{user.last_name}}</td>
+				</tr>
+				<tr>
+					<th>User Name</th>
+					<td>{{user.username}}</td>
+				</tr>
+				<tr>
+					<th>Date of Joning</th>
+					<td>{{user.date_joined}}</td>
+				</tr>
+				<tr>
+					<th>Last Joined</th>
+					<td>{{user.last_login}}</td>
+				</tr>
+				<tr>
+					<th>Age</th>
+					<td>{{user.update.age}}</td>
+				</tr> 
+			</table>
+			<a href='{% url "update" %}' class="btn btn-success">Update</a>
+		</div>
+	</div>
+	
+</div>
+{% endblock %}

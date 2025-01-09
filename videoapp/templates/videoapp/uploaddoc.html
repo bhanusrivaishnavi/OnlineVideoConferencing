@@ -1,0 +1,43 @@
+{% extends 'videoapp/base.html' %}
+{% block title %}Upload{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="card mt-3 mx-auto col-md-6">
+        <h2 class="bg-secondary text-center text-white mt-2">
+            UPLOAD
+        </h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>File Name will be same as given.Upload recorded video to obtain the report.</label>
+    <label>Select a file:</label>
+    <input type="file" name="myfile" required>
+    <button type="submit" class="form-control btn btn-outline-success">Upload</button>
+  </form>
+ </div>
+</div>
+  {% for i,j in uploaded_file_url.items %}
+     <h1>File Uploaded Successfully</h1>
+    <p>File uploaded at: <a href="{{ j }}">{{ i }}</a></p>
+  {% endfor %}
+  
+  
+{% endblock %}
+
+<!--
+<div class="container">
+    <div class="card mt-3 mx-auto col-md-6">
+        <h2 class="bg-secondary text-center text-white mt-2">
+            UPLOAD
+        </h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label>File Name:</label>
+            <input type="text" id="filename" name="filename" required><br>
+            <label>Select a file:</label>
+            <input type="file" id="file" name="file" required>
+            <input type="submit" name="submit" value="Upload"
+            class="form-control btn btn-outline-success">  
+        </form>
+    </div>
+</div>
+-->

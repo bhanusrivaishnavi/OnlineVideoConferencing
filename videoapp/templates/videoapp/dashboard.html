@@ -1,0 +1,183 @@
+{% extends 'videoapp/base.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+ <script src='https://meet.jit.si/external_api.js'></script>
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,
+		initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity=
+"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+		crossorigin="anonymous">
+
+	<link rel="stylesheet" href=
+"https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+		integrity=
+"sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+		crossorigin="anonymous">
+
+</head>
+
+<body>
+	{% if not user.is_superuser and not user.is_staff %}
+	<div class="container">
+		<br>
+		<h1>Dashboard</h1><br><br><br>
+		<div class="row">
+			<div class="col-lg-4 mb-4">
+				<div class="card" style="height: 24rem; width: 18rem;">
+                    <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWerVt1IZRWxoWYXPoT4rCSQ-dbBAexvoUQg&usqp=CAU" style="height: 150px">
+                      <div class="card-body">
+                          <h5 class="card-title">Join Your Class</h5>
+                              <p class="card-text">Click the button to join the class and enter the meeting ID.</p>
+			                     <a href="{% url 'teacherjoin' %}" class="form-control btn btn-primary">Click to join</a>
+                      </div>
+                </div>
+			</div>
+			<div class="col-lg-4 mb-4">
+				<div class="card" style="height: 24rem; width: 18rem;">
+                    <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlIJTMjV8Vdiiim9NmZIqlTZ95qeF4eZyITg&usqp=CAU" alt="Card image cap" style="height: 150px">
+                      <div class="card-body">
+                          <h5 class="card-title">Reports</h5>
+                              <p class="card-text">Read the reports of the classes and complete your revision</p>
+                              <a href="{% url 'displayfiles' %}" class="form-control btn btn-primary">Click Here!</a>
+                      </div>
+                </div>
+			</div>
+			<div class="col-lg-4 mb-4">
+				<div class="card" style="height: 24rem; width: 18rem;">
+                    <img class="card-img-top" src="https://previews.123rf.com/images/rawpixel/rawpixel1409/rawpixel140903271/31312362-multi-ethnic-group-of-people-and-discussion-concept.jpg" alt="Card image cap" style="height: 150px">
+                      <div class="card-body">
+                          <h5 class="card-title">Discussion</h5>
+                              <p class="card-text">Enter to discuss with your peers!!</p><br>
+                              <a href="{% url 'forumhome' %}" class="form-control btn btn-primary">Discuss Here!</a>
+                      </div>
+                </div>
+			</div>			
+		</div>
+	</div>
+	{% endif %}
+	{% if user.is_staff and not user.is_superuser%}
+		<div class="container">
+		<br>
+		<h1>Dashboard</h1><br><br><br>
+		<div class="row">
+			<div class="col-lg-4 mb-4">
+				<div class="card" style="height: 24rem; width: 18rem;">
+                    <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWerVt1IZRWxoWYXPoT4rCSQ-dbBAexvoUQg&usqp=CAU" style="height: 150px">
+                      <div class="card-body">
+                          <h5 class="card-title">Join Your Class</h5>
+                              <p class="card-text">Click the button to join the class and enter the meeting ID.</p>
+			                     <a href="{% url 'teacherjoin' %}" class="form-control btn btn-primary">Click to join</a>
+                      </div>
+                </div>
+			</div>
+			<div class="col-lg-4 mb-4">
+				<div class="card" style="height: 24rem; width: 18rem;">
+                    <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlIJTMjV8Vdiiim9NmZIqlTZ95qeF4eZyITg&usqp=CAU" alt="Card image cap" style="height: 150px">
+                      <div class="card-body">
+                          <h5 class="card-title">Create Reports</h5>
+                              <p class="card-text">Upload Files Here!</p><br>
+                              <a href="{% url 'uploaddoc' %}" class="form-control btn btn-primary">Click Here!</a>
+                      </div>
+                </div>
+			</div>
+			<div class="col-lg-4 mb-4">
+				<div class="card" style="height: 24rem; width: 18rem;">
+                    <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTejkc12nK-0yJjZoMbvhL_SX3fOsPlyIXAWg&usqp=CAU" alt="Card image cap" style="height: 150px">
+                      <div class="card-body">
+                          <h5 class="card-title">Upload the reports</h5>
+                              <p class="card-text">Enter to see/delete the document</p><br>
+                              <a href="{% url 'displayfiles' %}" class="form-control btn btn-primary">Enter</a>
+                      </div>
+                </div>
+			</div>			
+		</div>
+	</div>
+	{% elif user.is_superuser %}
+	<div class="container">
+		<br>
+		<h1>Dashboard</h1><br><br><br>
+		<div class="row">
+			<div class="col-lg-4 mb-4">
+				<div class="card" style="height: 24rem; width: 18rem;">
+                    <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWerVt1IZRWxoWYXPoT4rCSQ-dbBAexvoUQg&usqp=CAU" style="height: 150px">
+                      <div class="card-body">
+                          <h5 class="card-title">Register new members</h5>
+			                     <a href="{% url 'register' %}" class="form-control btn btn-primary">Click to Register</a>
+                      </div>
+                </div>
+			</div>
+			<div class="col-lg-4 mb-4">
+				<div class="card" style="height: 24rem; width: 18rem;">
+                    <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlIJTMjV8Vdiiim9NmZIqlTZ95qeF4eZyITg&usqp=CAU" alt="Card image cap" style="height: 150px">
+                      <div class="card-body">
+                          <h5>To go to administration site: </h5>
+                          <h4>Enter:</h4>
+                          <h5>http://127.0.0.1:8000/videoapp/admin1</h5>
+                      </div>
+                </div>
+			</div> 
+		</div>
+	</div>
+    {% endif  %}
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script>
+var button = document.querySelector('#start');
+var container = document.querySelector('#jitsi-container');
+var api = null;
+ 
+button.addEventListener('click', () => {
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var stringLength = 10;
+ 
+    function pickRandom() {
+    return possible[Math.floor(Math.random() * possible.length)];
+    }
+ 
+var randomString = Array.apply(null, Array(stringLength)).map(pickRandom).join('');
+ randomString="vrv3Iw6cAP"
+    var domain = "meet.jit.si";
+    var options = {
+        "roomName": randomString,
+        "parentNode": container,
+        "width": 1280,
+        "height": 600,
+    };
+    api = new JitsiMeetExternalAPI(domain, options);
+});
+ 
+</script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			integrity=
+"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+			crossorigin="anonymous">
+	</script>
+
+	<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+			integrity=
+"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+			crossorigin="anonymous">
+	</script>
+
+	<script src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+			integrity=
+"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+			crossorigin="anonymous">
+	</script>
+</body>
+
+</html>
+
+{% endblock %}
+

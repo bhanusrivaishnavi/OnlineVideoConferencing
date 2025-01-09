@@ -1,0 +1,47 @@
+{% extends 'videoapp/base.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<head>
+  <script src='https://meet.jit.si/external_api.js'></script>
+</head>
+<body> <!--
+    <h1>{{id}}</h1>
+<form>
+<input type="text" name="id" required>
+<button id="start" type="button">Start</button>  
+</form>-->
+<div id="jitsi-container">
+</div>
+
+<script>
+var button = document.querySelector('#start');
+var container = document.querySelector('#jitsi-container');
+var id=document.querySelector('#id')
+var api = null;
+ document.write(id);
+ document.write("Hello World!");
+button.addEventListener('click', () => {
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var stringLength = 10;
+ 
+    function pickRandom() {
+    return possible[Math.floor(Math.random() * possible.length)]; 
+    }
+ 
+var randomString = Array.apply(id, Array(stringLength));
+ 
+    var domain = "meet.jit.si";
+    var options = {
+        "roomName": randomString,
+        "parentNode": container,
+        "width": 1280,
+        "height": 600,
+    };
+    api = new JitsiMeetExternalAPI(domain, options);
+});
+ 
+</script>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'videoapp/base.html' %}
+{% block title %}Logout{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="card mt-3 mx-auto col-md-6">
+		<h2 class="bg-secondary text-center text-white mt-2">
+		    You have been logged out 
+		</h2>
+		<a  href="{% url 'login' %}" class="btn btn-outline-info">
+			Login Again
+		</a>
+	</div>
+</div>
+{% endblock %}
